@@ -20,4 +20,6 @@ Appropriate validations should be done e.g. No Duplicate Players, Games, Days et
 ## Commit Versions
 Version 1.0 - Uploaded working code (Using only Array)
 
-Version 1.1 - Added Comments
+Version 1.1 - Added comments
+
+Version 1.2 - Added additional test cases
