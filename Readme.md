@@ -17,10 +17,6 @@ Application should generate following reports.
 Application is not expected to create the schedule. Schedule needs to be fed to the system.
 
 Appropriate validations should be done e.g. No Duplicate Players, Games, Days etc.
-
 ## Commit Versions
-01. Uploaded Readme.md (19th July)
-02. Edited Readme.md - Added space after hash (19th July)
-03. Uploaded Assignment Java codes based on Array (19th July)
-04. Edited Readme.md - Describe the assignment (19th July)
-05. Updated Readme.md - Updated description (19th July)
+Version 1.0 - Uploaded working code (Using only Array)
+Version 1.1 - Added comments to program
