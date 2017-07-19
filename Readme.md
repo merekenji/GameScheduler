@@ -19,5 +19,3 @@ Application is not expected to create the schedule. Schedule needs to be fed to 
 Appropriate validations should be done e.g. No Duplicate Players, Games, Days etc.
 ## Commit Versions
 Version 1.0 - Uploaded working code (Using only Array)
-
-Version 1.1 - Added comments to program
