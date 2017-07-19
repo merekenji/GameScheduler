@@ -84,16 +84,22 @@ public class SchedulerService implements ISchedulerService {
 					}
 				}
 
+				int count = 0;
 				sb.append("Days game is scheduled on\n");
 				for (Day d : dayRepo.findAll()) { //get all days in repository
 					if (d != null) { //ensure day is not null
 						for (Game g : d.getGames()) { //looping games scheduled on day
 							if (g.getName().equals(gameName)) { //check if game name matches
 								sb.append(d.getName() + "\n");
+								count++;
 								break;
 							}
 						}
 					}
+				}
+				
+				if(count == 0) {
+					return new StringBuffer("Error: Game not scheduled on any day");
 				}
 			}
 		}

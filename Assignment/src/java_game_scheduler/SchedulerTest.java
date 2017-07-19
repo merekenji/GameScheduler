@@ -264,4 +264,20 @@ public class SchedulerTest {
 
 		assertEquals("Error: Day name should not be empty", service.dayWiseReport("").toString());
 	}
+	
+	@Test
+	public void generateGameReportThatAreNotScheduledOnAnyDays() {
+		ISchedulerService service = new SchedulerService();
+		
+		Game game = new Game("Basketball", 5);
+		service.createGame(game);
+		Game[] games = { game };
+		Player player1 = new Player("Tom", games);
+		Player player2 = new Player("Jerry", games);
+		service.createPlayer(player1);
+		service.createPlayer(player2);
+		
+		assertEquals("Error: Game not scheduled on any day", service.gameWiseReport("Basketball").toString());
+	}
+	
 }
