@@ -1,4 +1,4 @@
-package assignment1;
+package java_game_scheduler;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -7,7 +7,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createGameSuccessfully() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		assertEquals("Success: Game has been saved successfully", service.createGame(game));
@@ -15,7 +15,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createGameWithNullGameName() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("", 5);
 		assertEquals("Error: The Game name should not be empty", service.createGame(game));
@@ -23,7 +23,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createGameWithNoPlayers() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Golf", 0);
 		assertEquals("Error: There should at least be 1 player playing in the game", service.createGame(game));
@@ -31,7 +31,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createDuplicateGame() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		service.createGame(game);
@@ -40,15 +40,15 @@ public class SchedulerTest {
 
 	@Test
 	public void createNullGame() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: The Game object is null", service.createGame(null));
 	}
 
 	@Test
 	public void createPlayerSuccessfully() {
-		SchedulerService service = new SchedulerService();
-
+		ISchedulerService service = new SchedulerService();
+		
 		Game game1 = new Game("Tennis", 2);
 		Game game2 = new Game("Football", 11);
 		Game game3 = new Game("Badminton", 2);
@@ -60,7 +60,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createPlayerThatPlayNoGames() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game1 = new Game("Tennis", 2);
 		Game game2 = new Game("Football", 11);
@@ -72,7 +72,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createPlayerWithNoName() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		service.createGame(game);
@@ -83,7 +83,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createDuplicatePlayer() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		service.createGame(game);
@@ -95,14 +95,14 @@ public class SchedulerTest {
 
 	@Test
 	public void createNullPlayer() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: The Player object is null", service.createPlayer(null));
 	}
 
 	@Test
 	public void createDaySuccessfully() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game1 = new Game("Tennis", 2);
 		Game game2 = new Game("Basketball", 5);
@@ -115,7 +115,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createDayWithNoGamesInRepo() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game1 = new Game("Tennis", 2);
 		Game game2 = new Game("Basketball", 5);
@@ -126,7 +126,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createDayWithoutName() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		service.createGame(game);
@@ -137,7 +137,7 @@ public class SchedulerTest {
 
 	@Test
 	public void createDuplicateDay() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Tennis", 2);
 		service.createGame(game);
@@ -149,14 +149,14 @@ public class SchedulerTest {
 
 	@Test
 	public void createNullDay() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: The Day object is null", service.createDay(null));
 	}
 
 	@Test
 	public void generateGameReportSuccessfully() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		Game game = new Game("Basketball", 5);
 		service.createGame(game);
@@ -181,21 +181,21 @@ public class SchedulerTest {
 
 	@Test
 	public void generateNonExistantGameReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Game does not exist", service.gameWiseReport("Tennis").toString());
 	}
 
 	@Test
 	public void generateEmptyGameReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Game name should not be empty", service.gameWiseReport("").toString());
 	}
 
 	@Test
 	public void generatePlayerReportSuccessfully() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 		
 		Game game = new Game("Basketball", 5);
 		service.createGame(game);
@@ -217,21 +217,21 @@ public class SchedulerTest {
 
 	@Test
 	public void generateNonExistantPlayerReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Player does not exist", service.playerWiseReport("Tom").toString());
 	}
 
 	@Test
 	public void generateEmptyPlayerReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Player name should not be empty", service.playerWiseReport("").toString());
 	}
 
 	@Test
 	public void generateDayReportSuccessfully() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 		
 		Game game = new Game("Basketball", 5);
 		service.createGame(game);
@@ -253,14 +253,14 @@ public class SchedulerTest {
 
 	@Test
 	public void generateNonExistantDayReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Day does not exist", service.dayWiseReport("Day One").toString());
 	}
 
 	@Test
 	public void generateEmptyDayReport() {
-		SchedulerService service = new SchedulerService();
+		ISchedulerService service = new SchedulerService();
 
 		assertEquals("Error: Day name should not be empty", service.dayWiseReport("").toString());
 	}
