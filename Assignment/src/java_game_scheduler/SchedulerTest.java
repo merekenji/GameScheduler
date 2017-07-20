@@ -280,4 +280,17 @@ public class SchedulerTest {
 		assertEquals("Error: Game not scheduled on any day", service.gameWiseReport("Basketball").toString());
 	}
 	
+	@Test
+	public void generateGameReportThatHasNoPlayers() {
+		ISchedulerService service = new SchedulerService();
+		
+		Game game = new Game("Basketball", 5);
+		service.createGame(game);
+		Game[] games = { game };
+		Day day = new Day("Day One", games);
+		service.createDay(day);
+		
+		assertEquals("Error: Game does not have any players", service.gameWiseReport("Basketball").toString());
+	}
+	
 }

@@ -72,19 +72,24 @@ public class SchedulerService implements ISchedulerService {
 				sb.append("Game Report for " + game.getName() + "\n");
 				sb.append("No. of Players: " + game.getNoOfPlayers() + "\n\n");
 
+				int count = 0;
 				sb.append("Players playing in this game\n");
 				for (Player p : playerRepo.findAll()) { //get all players in repository
 					if (p != null) { //ensure player is not null
 						for (Game g : p.getGames()) { //looping games player is playing in
 							if (g.getName().equals(gameName)) { //check if game name matches
 								sb.append(p.getName() + "\n");
+								count++;
 								break;
 							}
 						}
 					}
 				}
+				if(count == 0) { //if game does not have any players
+					return new StringBuffer("Error: Game does not have any players");
+				}
 
-				int count = 0;
+				count = 0;
 				sb.append("Days game is scheduled on\n");
 				for (Day d : dayRepo.findAll()) { //get all days in repository
 					if (d != null) { //ensure day is not null
@@ -98,7 +103,7 @@ public class SchedulerService implements ISchedulerService {
 					}
 				}
 				
-				if(count == 0) {
+				if(count == 0) { //if game was not scheduled on any days
 					return new StringBuffer("Error: Game not scheduled on any day");
 				}
 			}
